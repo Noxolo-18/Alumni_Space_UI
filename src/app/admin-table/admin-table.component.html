@@ -1,0 +1,28 @@
+<!--admin-table.component.html-->
+<h1>Admin Panel</h1>
+<table>
+  <tr>
+    <th>User</th>
+    <th>Query</th>
+    <th>Status</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let row of data; let i = index">
+    <td>{{ row.user }}</td>
+    <td>{{ row.query }}
+    </td>
+    <!--<td>{{ row.status }}</td>-->
+    <td>
+      {{ row.status }}
+      <span *ngIf="row.timestamp"> - {{ row.timestamp | date: 'medium' }}</span>
+    </td>
+    <td>
+      <button (click)="toggleResponseForm(i)">Respond</button>
+      <div class="response-form" [ngStyle]="{ display: responseForms[i] ? 'block' : 'none' }">
+        <textarea [(ngModel)]="row.response"></textarea>
+        <button (click)="submitResponse(i)">Submit</button>
+      </div>
+    </td>
+    
+  </tr>
+</table>
