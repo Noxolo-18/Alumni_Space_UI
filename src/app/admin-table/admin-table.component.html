@@ -9,9 +9,11 @@
   </tr>
   <tr *ngFor="let row of data; let i = index">
     <td>{{ row.user }}</td>
-    <td>{{ row.query }}
+    <td>
+      {{ row.query }}
+      <br>
+      <span *ngIf="row.timestamp">{{ row.timestamp | date: 'medium' }}</span>
     </td>
-    <!--<td>{{ row.status }}</td>-->
     <td>
       {{ row.status }}
       <span *ngIf="row.timestamp"> - {{ row.timestamp | date: 'medium' }}</span>

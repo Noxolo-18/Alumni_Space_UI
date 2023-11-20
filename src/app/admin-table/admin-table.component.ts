@@ -1,4 +1,4 @@
-//admin-table.component.ts
+/*// admin-table.component.ts
 import { Component } from '@angular/core';
 
 
@@ -27,4 +27,47 @@ export class AdminTableComponent {
     this.responseForms[index] = false;
   }
   
+}
+*/
+// admin-table.component.ts
+
+import { Component, OnInit } from '@angular/core';
+import { AdminTableService } from '../admin.service';
+
+@Component({
+  selector: 'app-admin-table',
+  templateUrl: './admin-table.component.html',
+  styleUrls: ['./admin-table.component.css'],
+})
+export class AdminTableComponent implements OnInit {
+  data: any[] = [];
+  responseForms: boolean[] = [];
+
+  constructor(private adminTableService: AdminTableService) {}
+
+  ngOnInit(): void {
+    this.loadQueries();
+  }
+
+  loadQueries(): void {
+    this.adminTableService.getQueries().subscribe(queries => {
+      this.data = queries;
+      this.responseForms = new Array(this.data.length).fill(false);
+    });
+  }
+
+  toggleResponseForm(index: number): void {
+    this.responseForms[index] = !this.responseForms[index];
+  }
+
+  submitResponse(index: number): void {
+    const queryId = this.data[index].id; // Adjust this based on your backend model
+    const response = this.data[index].response;
+
+    this.adminTableService.submitResponse(queryId, response).subscribe(() => {
+      this.data[index].status = 'Answered';
+      this.data[index].timestamp = new Date();
+      this.responseForms[index] = false;
+    });
+  }
 }
