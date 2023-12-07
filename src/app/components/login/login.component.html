@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website for in-service training and current TUT vacancies</title>
+    <link rel="stylesheet" href="login.component.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+<body>
+
+
+    <div class="wrapper">
+        <i class="fa fa-times" aria-hidden="true"></i>
+        <div class="form-box login">
+            <h2>Login</h2>
+            <form (ngSubmit)="onLogin3()">
+                <div class="input-box">
+                    <input type="email" id="email" [(ngModel)]="email" name="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <input type="password" id="password" [(ngModel)]="password" name="password" required>
+                    <label>Password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox"> Remember me</label>
+                    <a routerLink="/forgot-password">Forgot Password?</a>
+                </div>
+                <button class="btn" type="submit">Login</button>
+                <div class="login-register">
+                    <p>Don't have an account?<a routerLink="/register" class="Register-link">Register</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="form-box register">
+            <h2>Registration</h2>
+            <form (ngSubmit)="onSubmit()">
+              <div class="input-box">
+                <input type="text" required [(ngModel)]="fullname" name="fullname">
+                <label>Name</label>
+              </div>
+              <div class="input-box">
+                <input type="text" required [(ngModel)]="surname" name="surname">
+                <label>Surname</label>
+              </div>
+              <div class="input-box">
+                <input type="email" required [(ngModel)]="email" name="email">
+                <label>Student Email</label>
+              </div>
+              <div class="input-box">
+                <input type="password" required [(ngModel)]="password" name="password">
+                <label>Password</label>
+              </div>
+              <div class="remember-forgot">
+                <label><input type="checkbox" name="agreeToTerms"> Agree to terms and conditions</label>
+              </div>
+              <button class="btn" type="submit">Register</button>
+              <div class="login-register">
+                <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+              </div>
+            </form>
+          </div>
+          
+    </div>
+
+
+    <script src="./script.js"></script>
+    <script type ="module" src="https://unpkg.com/ionicons@s5.2/dist/ionicons.esm.js"></script>
+    
+</body>
+</html>

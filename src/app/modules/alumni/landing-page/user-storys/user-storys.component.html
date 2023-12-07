@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="user-storys.component.css">
+<div class="col-md-8 col-lg-6 vstack gap-4">
+
+<!-- Story START -->
+<div class="d-flex gap-2 mb-n3" style="padding: 0 39px 0 350px; margin-top: -640px;">
+    <div class="position-relative">
+        <div
+            class="card border border-2 border-dashed h-150px px-4 px-sm-5 shadow-none d-flex align-items-center justify-content-center text-center" style="align-items:center; border: 2px solid #000; padding-left: 30%">
+            <div>
+
+                <label for="photoUpload" class="stretched-link btn btn-light rounded-circle icon-md " style="height: 90px;width: 90px;"data-bs-toggle="#feedActionPhoto">
+                    <i class="fa-solid fa-plus"></i>
+                    <h6 class="mt-2 mb-0 small">Post a Story</h6> 
+                </label>
+
+                <!-- <a class="stretched-link btn btn-light rounded-circle icon-md" href="#!"><i
+                        class="fa-solid fa-plus"></i></a>
+                <h6 class="mt-2 mb-0 small">Post a Story</h6> -->
+             <input type="file" accept="image/*,video/*"(change)="onPostUpload($event)" style="display: none" id="photoUpload"/>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stories -->
+    <div id="stories"
+        class="storiesWrapper stories-square stories user-icon carousel scroll-enable"></div>
+</div>
+<!-- Story END -->
+</div>
+
+ 

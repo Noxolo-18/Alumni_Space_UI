@@ -1,0 +1,125 @@
+<!-- <p>all-notifications works!</p> -->
+<!-- <div class="notifications">
+    <div class="return-home">
+        <a><svg xmlns="http://www.w3.org/2000/svg" (click)="returnHome()" width="40" height="30" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+          </svg>go back</a> -->
+    <!-- </div>
+       <hr />
+    <div class="title">All notifications</div>
+        <hr />
+    <div *ngIf="isHideNotifications" class="notifications-wrapper">
+        <div class="notification" *ngFor="let notification of queries; let i = index"> -->
+            <!-- (click)="showNotification()" -->
+            <!-- <hr>
+            <div class="sender">{{notification.alumni}}</div> -->
+            <!-- <div class="subject">{{ notification.subject }}</div> -->
+            <!-- <div class="more-info">
+                
+                <div class="message">{{notification.response}}</div>
+                <div class="date">{{notification.date}}</div>
+                <hr>
+            </div>
+            <div class="not-button">
+            <button type="button" class="btn btn-primary" (click)="readNotification(i)">Read Notification</button>
+                 
+        </div>
+             
+        </div> -->
+
+    <!-- </div>
+    <div class="notification" *ngFor="let notification of queries; let i = index">
+    <div  *ngIf="isReadnotification" class="card">
+        <hr />
+        <p>From: <b>Admin</b></p>
+        <p>Message:{{notification.response}}</p> -->
+        <!--<p>Date: {{notification.date}}</p>-->
+        <!-- <hr />
+    </div>
+   </div>    
+</div> -->
+
+<!-- /new updated code -->
+
+<div class="notifications">
+    <div class="return-home">
+      <a (click)="returnHome()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="30"
+          fill="currentColor"
+          class="bi bi-arrow-left"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+          ></path>
+        </svg>
+        go home
+      </a>
+    </div>
+    <hr />
+    <div class="title">All notifications</div>
+    <div class="top-content">
+      <p>Notifications: {{ queries.length }}</p>
+      <p>Unread notifications: {{ unreadNotificationCount }}</p>
+      <button type="button" class="btn btn-success" (click)="markAllAsRead()">Mark All as Read</button>
+    </div>
+    <div *ngIf="isHideNotifications" class="notifications-wrapper">
+      <div
+        [ngStyle]="{'background-color': isReadNotification(i) ? '#fff' : 'gray'}"
+        class="notification"
+        *ngFor="let notification of queries; let i = index"
+        (click)="onNotificationClick(i)">
+        <hr />
+        <!-- <div class="image-container">
+          {{ adminFnLletter }}
+        </div> -->
+        <div class="image-container">
+          <!-- sender === 'Admin'; else senderImage -->
+            <ng-container *ngIf="notification">
+              {{ adminFletter }}
+            </ng-container>
+            <!-- <ng-template #senderImage>
+              <img [src]="getSenderImage(notification.sender)" alt="SI">
+            </ng-template> -->
+          </div>
+
+        <div class="sender">{{sender }}</div>
+        <div class="more-info">
+          <!-- <div class="message">{{ notification.response }}</div> -->
+              <div class="message">{{truncateMessage(notification.response, 15)}}</div>
+          <!-- <div class="date">{{ notification.date | date }}</div> -->
+          <div class="date">{{ dateReceived }}</div>  
+        </div>
+      </div>
+    </div>
+    <div class="notification" *ngFor="let notification of queries; let i = index">
+      <div *ngIf="selectedNotificationIndex === i" class="card">
+        <small style="color: green; margin-left: auto;">
+          <p>{{ timeReplied }}</p>
+          <p>{{ notification.date }}</p>
+        </small>
+        <hr />
+        <!-- <div class="image-container2">
+          {{ adminFnLletter }}
+        </div> -->
+        <div class="image-container2">
+          <!-- .sender === 'Admin'; else senderImage -->
+            <ng-container *ngIf="notification">
+              {{ adminFletter }}
+            </ng-container>
+            <ng-template #senderImage>
+              <img [src]="getSenderImage(notification.sender)" alt="SI">
+            </ng-template>
+          </div>
+
+        <p>From: {{ sender}}</p>
+        <p>message: {{ notification.response }}</p>
+        <hr />
+        <button type="button" style="width: 100px; margin-left: 40%; margin-bottom: 5%; height: 50px; color:black" class="btn btn-primary" (click)="backtoNot()">back</button>
+      </div>
+    </div>
+  </div>
